@@ -1,0 +1,103 @@
+Lifecycle trong class components
+-------------------------------------------------------------------
+- Trong react , components lifecycle gồm các sự kiện :
++ Mounting (thêm các nút vào DOM)
++ Updating (thay đổi các nút hiện có trong DOM)
++ Unmounting (xóa các nút khỏi DOM)
++ Error handling (xác minh mã hoạt động và không có lỗi)
+-------------------------------------------------------------------
+1.Mounting : là giai đoạn các components được tạo và thêm vào DOM
+-------------------------------------------------------------------
+- constructor(): 
++ Hàm constructor được gọi trước khi components được mount,
+dùng để khởi tạo state và rằng buộc các phương thức xử lý sự
+kiện trong phương thức khởi tạo.
+-------------------------------------------------------------------
+- static getDerivedStateFromProps():
++ Chức năng chính của nó là đảm bảo rằng state và props
+được đồng bộ hóa khi được yêu cầu.
++ Nhận 2 tham số là state và prop: 
+const MyComponent extends React.Component {
+  ... 
+
+  static getDerivedStateFromProps(props,state) {
+// nội dung
+  }  
+}
++ Có thể trả về object để update state của components
+-------------------------------------------------------------------
+- render():
+class MyComponent extends React.Component {
+// render is the only required method for a class component 
+   render() {
+    return (
+	// nội dung
+     )
+   }
+}
++ hàm render phải là hàm pure , tức là không sử dụng setState
+hay tương tác với các API bên ngoài 
+-------------------------------------------------------------------
+- componentDidMount():
++ Hàm này được gọi ngay sau khi thành phần được gắn vào DOM.
++ Sử dụng phương thức này để lấy nút DOM từ cây components 
+sau khi nó được gắn kết
+-------------------------------------------------------------------
+2.Updating : là giai đoạn các components được update
+-------------------------------------------------------------------
+- static getDerivedStateFromProps() :
++ giống như hàm phần mounting
+-------------------------------------------------------------------
+- shouldComponentUpdate() :
++ trả về giá trị true hoặc false
++ sử dụng để kiểm soát chức năng update hay không của components
+-------------------------------------------------------------------
+- render() :
++ thực hiện sau khi hàm shouldComponentUpdate() trả về giá trị true
+-------------------------------------------------------------------
+- getSnapshotBeforeUpdate() :
++ cần thiết khi cần lấy thông tin từ DOM trước khi update
++ được gọi ngay sau phương thức render 
++ nhận các thông số prevProps, prevState
+ getSnapshotBeforeUpdate(prevProps, prevState) {
+   
+ }
+-------------------------------------------------------------------
+- componetntDidUpdate() :
++ được gọi sau khi DOM update và getsnapshotBeforeUpdate
++ nhận các thông số prevProps, prevState, snapshot
+ componentDidUpdate(prevProps, prevState, snapshot) {
+ 
+ }
+-------------------------------------------------------------------
+3. Unmounting 
+-------------------------------------------------------------------
+- componentWillUnmount() :
++ Đây là nơi để thực hiện mọi thao tác dọn dẹp cần thiết 
+như xóa bộ hẹn giờ, hủy yêu cầu mạng hoặc xóa bất kỳ 
+đăng ký nào đã được tạo trong componentDidMount ().
+-------------------------------------------------------------------
+4. Error handling
+-------------------------------------------------------------------
+- static getDerivedStateFromError() :
++ Bất cứ khi nào có lỗi ở component con thì thành phần này
+sẽ được gọi đầu tiên và lỗi sẽ được truyền như 1 đối số
++ Bất kì giá trị nào được trả về từ phương thức này đều 
+được sử dụng để cập nhất trạng thái của thành phần 
++ Lỗi sẽ được ghi vào cửa sổ console và 1 đối tượng được trả
+về từ phương thức getDerivedStateFromError, nó sẽ được dùng 
+để cập nhật trạng thái của lỗi 
+-------------------------------------------------------------------
+- componentDidCatch() : 
++ Phương thức componentDidCatch cũng được gọi sau khi một lỗi 
+trong thành phần con được đưa ra. Ngoài lỗi được đưa ra,
+nó được truyền thêm một đối số biểu thị thêm thông tin 
+về lỗi.
+
+ componentDidCatch(error, info) {
+    logToExternalService(error, info)  
+       
+ }
+
++Trong phương pháp này, có thể gửi lỗi hoặc thông tin
+nhận được đến logging service bên ngoài. 

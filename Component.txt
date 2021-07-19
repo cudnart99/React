@@ -1,0 +1,126 @@
+
+// Functional components
+
+------------------------------------------------------------------------------
+- Tiến hành tạo một file có tên Welcome.js trong thư mục src/components
+------------------------------------------------------------------------------
+import React from "react";	
+ 
+const Welcome = function(props) {   // truyền tham số props
+  return (
+    <div>
+      // nội dung components 
+    </div>
+  )
+}
+ 
+export default Welcome; // export component để file khác có thể lấy sử dụng
+------------------------------------------------------------------------------
+- Vào file App.js
+------------------------------------------------------------------------------
+import React from 'react';
+import Welcome from './components/Welcome' // import file Welcome mới khởi tạo
+function App() {
+  return (
+    <div>
+        <Welcome />  // gọi file Welcome
+    </div>
+  );
+}
+ 
+export default App;
+------------------------------------------------------------------------------
+- Trong functional component thì sẽ không có các khái niệm như 
+state, life cycles, events,... nên cần React Hooks để làm việc với chúng 
+------------------------------------------------------------------------------
+
+// Class component
+
+------------------------------------------------------------------------------
+- Tiến hành tạo một file có tên Welcome.js trong thư mục src/components
+------------------------------------------------------------------------------
+import React, { Component } from "react";
+class Welcome extends Component {
+  render() {
+    return (
+      <div>
+        // nội dung components
+      </div>
+    );
+  }
+}
+export default Welcome; 
+------------------------------------------------------------------------------
+- Phần import vào App.js giống như functional component
+- Class component có thể sử dung được hầu hết chức năng của component
+như state, props, lifecycle
+------------------------------------------------------------------------------
+
+// Props 
+
+------------------------------------------------------------------------------
++ Định nghĩa : 
+- Props là một object được truyền vào trong một components, mỗi
+components sẽ nhận vào props và trả về react element.
+- Props cho phép chúng ta giao tiếp giữa các components với nhau 
+bằng cách truyền tham số qua lại giữa các components.
+- Khi một components cha truyền cho component con một props thì 
+components con chỉ có thể đọc và không có quyền chỉnh sửa nó bên
+phía components cha.
+------------------------------------------------------------------------------
++ Truyền props
+
+- Truyền dữ liệu từ một component với nhau bằng cách truyền như một 
+attributes trong HTML element như sau:
+
+// Bên trong components tên Welcome : 
+<Welcome tenProps1="giatri" tenProps2 = "giatri2">
+	Gía trị children
+</Welcome>
+------------------------------------------------------------------------------
++ Nhận props trong components 
+
+- Với class component : nhận giá trị props bằng cách từ khóa this.props.<tên props>
+- Với functional component : khai báo tham số props và nhận giá trị props 
+bằng cách từ khóa props.<tên props>
+------------------------------------------------------------------------------
+
+// State
+
+------------------------------------------------------------------------------
+- State là một object có thể được sử dụng để chứa dữ liệu hoặc thông tin về 
+components
+- State chỉ tồn tại trong phạm vi của components chứa nó, mỗi khi state thay 
+đổi thì components đó sẽ được render lại.
+
+- Khởi tạo 1 State bên trong phương thức constructor :
+ constructor(props) {
+    super(props);
+    //Chỉ định một state
+    this.state = { name : "Duc" };
+  }
+
+- Gọi state : 
+ {this.state.name};
+
+- Cập nhật một state : 
+ this.setState({
+     name : 'newValue'
+ })
+
+------------------------------------------------------------------------------
+
+// Cách component cha thay đổi giá trị của state của component con
+
+- Truyền giá trị props của component cha vào setState của component con để thay đổi
+State của con 
+
+------------------------------------------------------------------------------'
+
+
+
+
+
+
+
+
