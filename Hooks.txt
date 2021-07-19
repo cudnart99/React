@@ -1,0 +1,64 @@
+Hooks giúp dùng state và các chức năng khác trong functional components
+------------------------------------------------------------------------
+//useState
+
+- Cú pháp khai báo : const [state, setState] = useState(initialState);
+
+- Khi muốn update : setState(newValue)
++ Components sẽ re-render mỗi lần State được cập nhật
++ Components sẽ không re-render nếu một State có giá trị giống như cũ 
+được cập nhật
+
+- Một số trường hợp thường gặp :
+
++ Một state mới phụ thuộc vào giá trị state cũ
+-> React sẽ chắc chắn rằng giá trị state cũ được chính xác  
+//setState((prevState) => prevState + <change>);
+
++ Hợp nhất state object 
+* State được cập nhật chứ không nối vào giá trị cũ
+-> Cách khắc phục : setState((prevState) => ({ ...prevState, <update>}));
+
++ Tránh để State phụ thuộc trong Hooks
+* Rất có khả năng useEffect hoặc useCallback sẽ ảnh hưởng không mong muốn
+đến state phụ thuộc vào nó 
+
++ Chỉ giá trị props ban đầu trên kết xuất ban đầu được chuyển dưới dạng
+initialState. Các bản cập nhật tiếp theo bị bỏ qua
+-> Khắc phục : có thể truyền hàm chưa props sang
+
+-------------------------------------------------------------------------
+// Side effects 
++ Gọi api lấy dữ liệu 
++ Tương tác với DOM
++ Subscriptions
++ setTimeout, setInterval
+
+- Có 2 loại side effects
+1. Effect không cần clean up: gọi API, tương tác DOM
+2. Effect cần clean up: subscriptions, setTimeout ,setInterval
+
+//useEffect
+- Sử dụng cho side effects 
+- Gồm 2 phần : side effect và clean up(optional)
+- Được thực thi sau mỗi lần render.
+
+- Cú pháp useEffect(callback,dependencies)
+- Cú pháp trong hàm callback :  useEffect(() => {
+		                  // side effect ở đây
+		                   return () => {
+		                     //Clean up ở đây
+		                     //Thực hiện trước khi render hoặc unmount
+	                	   };
+                                 })
+- Dependencies :
++ Không khai báo : useEffect luôn được chạy sau mỗi lần render
++ Để là 1 mảng rỗng ( [] ) : useEffect chạy đúng 1 lần 
++ Có dữ liệu : lần đầu luôn render, lần tiếp theo thay đổi hay không 
+phụ thuộc vào dữ liệu có thay đổi hay không 
+
+
+
+
+
+
