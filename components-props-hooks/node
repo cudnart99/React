@@ -1,0 +1,14 @@
+- cú pháp style trong JSX :
+ <div className="card" style={{width: "18rem"}}>
+ - truyền kiểu dữ liệu từ cha -> con, theo dạng key = "value"
+ (không đặt key = children) value nhận vào có kiểu dữ liệu là 
+ kiểu chuỗi . Bỏ trong dấu {} đề truyền đúng kiểu dữ liệu
+ - nhận thông tin từ từ khóa của cha : this.props.key
+ - nhận thông tin từ nội dung của cha : this.props.children
+
+ - cú pháp dùng props : 
+ const App = () => <Welcome tenProps1="giatri" tenProps2 = "giatri2">Gía trị của props.children</Welcome>
+ - ví dụ props :
+ const App = () => <Welcome name="Bentran" age=20 gender="male">Xin chào </Welcome>
+
+ 
