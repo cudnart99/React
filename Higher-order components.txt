@@ -1,0 +1,57 @@
+// Higher-order components 
+
+Cấu trúc 1 HOC :
+- Là một function 
+- Nhận 1 component khác làm đối số 
+- Trả về 1 component mới 
+- Component nó trả vè có thể render component cũ
+
+FACT :
+- HOC không thay đổi component mà tạo ra một component mới
+- HOC giúp sử dụng lại code 
+- HOC là 1 pure function . Nó không có side effect, chỉ trả về một 
+components mới 
+
+Một số trường hợp có thể dùng :
+- Hiện của số load khi component đang chờ dữ liệu 
+- Render component có điều kiện 
+- Tạo các component có hiệu ứng riếng 
+- Tạo các component với các prop mong muốn 
+
+-------------------------------------------------------------------------
+// Higher-Order function
+
+Định nghĩa : 
+- Là một function mà cho phép thực hiện ít nhất 1 trong 2 khả năng : 
++ Nhận vào một hoặc nhiều function như là tham số
++ Trả về kết quả là một function. 
+
+Chức năng : 
+- Cho phép sử dụng lại những đoạn code tương đồng
+
+-------------------------------------------------------------------------
+// Currying 
+
+Định nghĩa : 
+- Currying là kỹ thuật mà cho phép chuyển đổi một function với nhiều tham số
+thành những functions liên tiếp có một tham số.
+// Ví dụ f(a,b,c) có thể được convert thành g(a)h(b, c) 
+hay g(a)h(b)k(c), thậm chí là đổi thứ tự của các function tương ứng...
+-> Chức năng : giúp cho code được gọn gàng hơn 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
