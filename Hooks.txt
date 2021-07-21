@@ -38,27 +38,49 @@ initialState. Các bản cập nhật tiếp theo bị bỏ qua
 1. Effect không cần clean up: gọi API, tương tác DOM
 2. Effect cần clean up: subscriptions, setTimeout ,setInterval
 
+-------------------------------------------------------------------------
 //useEffect
 - Sử dụng cho side effects 
 - Gồm 2 phần : side effect và clean up(optional)
 - Được thực thi sau mỗi lần render.
 
 - Cú pháp useEffect(callback,dependencies)
-- Cú pháp trong hàm callback :  useEffect(() => {
-		                  // side effect ở đây
-		                   return () => {
-		                     //Clean up ở đây
-		                     //Thực hiện trước khi render hoặc unmount
-	                	   };
-                                 })
+- Ví dụ :  useEffect(() => {
+             // side effect ở đây
+                return () => {
+                    //Clean up ở đây
+		    //Thực hiện trước khi render hoặc unmount
+	        };
+           },[]);
 - Dependencies :
 + Không khai báo : useEffect luôn được chạy sau mỗi lần render
 + Để là 1 mảng rỗng ( [] ) : useEffect chạy đúng 1 lần 
 + Có dữ liệu : lần đầu luôn render, lần tiếp theo thay đổi hay không 
 phụ thuộc vào dữ liệu có thay đổi hay không 
 
+-------------------------------------------------------------------------
+// Các giai đoạn của lifecycle trong useEffect()
 
+Mounting
+- redering
+- run useEffect()
 
+Updating
+- redering 
+- run "useEffect() cleanup" nếu dependencies thay đổi
+- run "useEffect()" nếu dependencies thay đổi
 
+Unmounting
+- run "useEffect() cleanup"
+
+-------------------------------------------------------------------------
+// Chuyển lại từ lifecycle sang useEffect()
+
+   useEffect(() => {
+        // phần này tương đương với hàm componentDidMount()
+       return () => {
+           // phần này tương đương với hàm componentWillUnmount()
+       };
+   },[]);
 
 

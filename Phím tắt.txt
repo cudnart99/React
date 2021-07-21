@@ -1,0 +1,5 @@
+Phím tắt trong vscode
+
+- rcc : khởi tạo nhanh class component
+- rfc : khởi tạo nhanh functional component
+- rconst : khởi tạo nhanh constructor

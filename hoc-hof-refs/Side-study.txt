@@ -1,0 +1,67 @@
+// setTimeout()
+
+- Hàm setTimeout() thường được sử dụng nếu bạn muốn hàm của mình 
+thực thi bao nhiêu mili giây kể từ khi gọi method setTimeout().
+
+- Cú pháp : setTimeout( expression, timeout);
+
+- Trong đó, expression là đoạn mã JavaScript được thực thi sau khi
+timeout chạy hết số mili giây đã thiết lập.
+
+VD1:
+<input type="button" name="sayHello" value="Wait for my Hello!"
+onclick="setTimeout('alert(\'Hello!\')', 4000)"/>
+- Ấn nút sau 4000 mili giây = 4 giây thì thực hiện alert 
+
+VD2: 
+function sayHello() {
+  alert('Hello');
+}
+setTimeout(sayHello, 1000);
+-> Sau 1 giây thì thực hiện alert
+
+- lưu ý : setTimeout() sẽ không dừng việc thực thi các lệnh 
+tiếp theo trong thời gian chờ
+
+-------------------------------------------------------------------------
+// Để dừng hàm này ta sử dụng : clearTimeout(myVar);
+với myVar được khai báo: myVar = setTimeout(function, milliseconds);
+
+VD :
+
+<button onclick="myVar = setTimeout(myFunction, 3000)">Try it</button>
+
+<button onclick="clearTimeout(myVar)">Stop it</button>
+
+<script>
+function myFunction() {
+  alert("Hello");
+}
+</script>
+
+Khi click button "Try it" sau 3s sẽ xuất hiện hộp thoại "Hello" 
+tuy nhiên nếu trong khoảng 3s lại click button "Stop it" hộp thoại
+sẽ không xuất hiện.
+
+-------------------------------------------------------------------------
+// setInterval()
+
+var myVar = setInterval(myTimer, 5000);
+
+function myTimer() {
+  alert("Hello world!");
+}
+
+Với đoạn mã JavaScript trên cứ sau 5s sẽ xuất hiện hộp thoại
+hiển thị thông báo "Hello world!".
+
+- Cú pháp : setInterval ( expression, interval );
+
+Để dừng hoạt động của hàm setInterval, chúng ta sử dụng 
+hàm clearInterval(timerId). Xem ví dụ dưới đây:
+
+// Hello is alerted repeatedly after every 3 seconds
+let timerId= setInterval(() => alert('Hello'), 3000);
+
+// Clear intervals after 6 sec with the timer id 
+setTimeout(() => { clearInterval(timerId); alert('Bye'); }, 6000);

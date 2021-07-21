@@ -1,0 +1,113 @@
+//// React refs & useRef
+------------------------------------------------------------------------------- 
+-------------------------------------------------------------------------------
+                                  React refs
+
+// Định nghĩa :
+- React refs là một tính năng hữu ích, nó là cách mà chúng ta có thể
+để tham chiếu một element trong DOM hoặc từ một class component con 
+đến component cha. Điều này cho phép chúng ta đọc và chỉnh sửa các 
+element đó
+-  Khi một element được gán vào một ref nó sẽ cho phép chúng ta 
+sửa đổi cũng như truy cập vào element đó ngay lập tức và không 
+cần sử dụng đến props hay state để component re-render lại
+-------------------------------------------------------------------------------
+// Khởi tạo 1 Ref
+- Refs thường được chỉ định trong hàm tạo trong constructor ở class 
+component và như một biến ở functional component
+
+constructor(props) {
+    super(props)
+
+    this.inputRef = React.createRef(); //Khởi tạo ref bằng hàm React.createRef()
+}
+
+- Sau đó được gắn vào một element trong hàm render()
+
+<input type="text" ref = {this.inputRef} /> // gắn refs vào trong 1 element
+
+- Khi một ref được gắn vào một element, element đó có thể được truy cập 
+và sửa đổi thông qua ref
+-------------------------------------------------------------------------------
+// Forwarding Refs
+- Forwarding Refs là một kỹ thuật để tự động chuyển một ref từ một component 
+tới component con, cho phép component cha có thể tham chiếu tới các element 
+của component con để đọc và chỉnh sửa nó
+
+Cách làm : 
+- Tạo 1 ref trong components cha bằng React.createRef()
+- Thêm thuộc tính ref vào trong thành phần con 
+- Chuyển ref đấy vào component con bằng phương thức React.forwardRef() 
++ Hàm React.forwardRef() nhận 2 tham số là props và ref , trong đó tham
+số ref là giá trị ref của components cha truyền vào
+- Gắn ref vào element cần dùng trong component con ( ref = {ref} ) 
+
+------------------------------------------------------------------------------- 
+------------------------------------------------------------------------------- 
+                                      useRef
+
+// Định nghĩa 
+- useRef (initialValue) là một hook React tích hợp sẵn chấp nhận một đối số 
+làm giá trị ban đầu và trả về một tham chiếu (còn gọi là ref). 
+- Tham chiếu là một đối tượng có thuộc tính đặc biệt là current.
+
+import { useRef } from 'react';
+
+function MyComponent() {
+  const reference = useRef(initialValue); // Khai báo giá trị ban đầu của ref
+
+  const someHandler = () => {
+  
+    const value = reference.current; // Gọi giá trị ref
+
+    reference.current = newValue; // Update giá trị ref
+  };
+
+  // ...
+}
+
+- Lưu ý :
++ Giá trị của ref được duy trì (giữ nguyên) giữa các lần re-render các component
++ Cập nhật ref không làm component bị re-render
+
+------------------------------------------------------------------------------- 
+// Sự khác nhau giữa ref và state 
+
+- Update ref không làm component re-render , trong khi đó state thì có 
+- Update ref là đồng bộ (synchronous) (giá trị ref được cập nhật có sẵn ngay lập tức), trong 
+khi Update state là không đồng bộ (asynchronous) (biến state được update sau khi 
+re-render)
+
+-> ref lưu trữ data của side-effects , trong khi state lưu trữ thông tin được
+hiển thị trực tiếp lên màn hình 
+
+------------------------------------------------------------------------------- 
+// Ref truy cập vào phần tử DOM 
+
+- Định nghĩa ref để truy cập vào element const elementRef = useRef();
+- Gán ref đến thuộc tính ref của element <div ref={elementRef}></div>;
+- Sau khi mounting, elementRef.current sẽ trỏ đến DOM element
+
+------------------------------------------------------------------------------- 
+!! lưu ý !! 
+- Không nên update ref hay update state bên trong một component function
+- Ref nên được update bên trong useEffect() hoặc bên trong các trình xử lí 
+(handlers)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
