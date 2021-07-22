@@ -1,0 +1,83 @@
+                                     Router
+-----------------------------------------------------------------------------
+
+//// Định nghĩa :
+
+----------------------------------------------------------------------------- 
++ React-Router là một thư viện định tuyến (routing) tiêu chuẩn trong React.
++ Nó giữ cho giao diện của ứng dụng đồng bộ với URL trên trình duyệt
++ React-Router cho phép bạn định tuyến "luồng dữ liệu" (data flow) trong 
+ứng dụng của bạn một cách rõ ràng
+-----------------------------------------------------------------------------
+
+//// Các thành phần trong React-router
+
+-----------------------------------------------------------------------------
+// BrowserRputer và HashRouter : 
++ BrowserRouter: Sử dụng History API có trong HTML5 để theo dõi lịch sử 
+bộ định tuyến của bạn
++ HashRouter: Sử dụng hash của URL (window.location.hash) để ghi nhớ mọi 
+thứ.
+-----------------------------------------------------------------------------
+// Route : Định nghĩa một ánh xạ (mapping) giữa một URL và một Component
+=> Khi người dùng truy cập theo 1 URL trên trình duyệt , một Component tương
+ứng sẽ được render trên giao diện 
+-----------------------------------------------------------------------------
+<Router>
+    <div className="App">
+        <Route path="/" exact component={Home} />
+        <Route path="/about" component={About} />
+        <Route path="/contact" component={Contact} />
+        <Route component={NotFound}/>
+    </div>
+</Router>
+-----------------------------------------------------------------------------
+Trong đó:
+
++ path: Là đường dẫn trên URL.
++ exact: Liúp cho route này này chỉ hoạt động nếu URL trên trình duyệt 
+phù hợp tuyệt đối với giá trị của thuộc tính path của nó.
++ component: Là component sẽ đươc load ra tương ứng với Route đó.
+-----------------------------------------------------------------------------
+// Link 
+- dụng cặp thẻ <Link></Link> được import từ React-Router
+
+<Link to="/about">About</Link> //to giống href trong thẻ a
+-----------------------------------------------------------------------------
+// NavLink
+- NavLink thì rất giống với Link về cách sử dụng, nhưng NavLink tốt hơn 
+vì nó hỗ trợ thêm một số thuộc tính như là activeClassName và activeStyle 
+2 thuộc tính này giúp cho khi mà nó trùng khớp thì nó sẽ được active lên 
+và chúng ta có thể style cho nó
+-----------------------------------------------------------------------------
+// Đối tượng Match
+- Dùng đề lấy dữ liệu trên URL về 
+-----------------------------------------------------------------------------
+//Đối tượng prompt 
+- Xác nhận trước khi chuyển trang
+-----------------------------------------------------------------------------
+//Redirect 
+- Dùng để chuyển trang 
+- Có thể truy xuất thông tin trang trước đó thông qua đối tượng location
+-----------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

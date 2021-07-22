@@ -3,7 +3,8 @@ import './App.css';
 // import React_refs from './components/react_refs'
 // import FRParentInput from './components/FRParentInput'
 // import LogButtonClicks from './components/useRef'
-import Stopwatch from './components/stopwatch';
+// import Stopwatch from './components/stopwatch';
+import Hof from './components/hof';
 
 function App() {
   return (
@@ -11,8 +12,8 @@ function App() {
       {/* <FRParentInput /> */}
       {/* <React_refs /> */}
       {/* <LogButtonClicks /> */}
-      <Stopwatch />
-
+      {/* <Stopwatch /> */}
+      <Hof />
     </div>
   );
 }
