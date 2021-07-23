@@ -1,0 +1,92 @@
+			Kiểm tra prop với PropTypes
+
+------------------------------------------------------------------------
+- PropTypes xuất một loạt các trình xác thực có thể được sử dụng để đảm
+bảo dữ liệu bạn nhận được là hợp lệ
+- Khi một giá trị không hợp lệ được cung cấp cho một prop, một cảnh 
+báo sẽ được hiển thị trong cửa số console
+
+Ví dụ : 
+
+import PropTypes from 'prop-types';       // import lib cần để check
+
+class Greeting extends React.Component {  
+  render() {
+    return (
+      <h1>Hello, {this.props.name}</h1>
+    );
+  }
+}
+
+Greeting.propTypes = {			  // kiểm tra xem prop có 
+  name: PropTypes.string                  // đúng type không
+};
+
+-> nếu prop ko đúng type thì sẽ có cảnh báo trên cửa sổ console
+
+------------------------------------------------------------------------
+// Lời khuyên :
+- Nên sửa các validators để chúng có thể trả về 1 lỗi, không nên chỉ để 
+là hiện cảnh báo trong cửa sổ console
+
+MyComponent.propTypes = {
+
+  // Một validator nào đó
+
+customProp: function(props, propName, componentName) {
+    if (!/matchme/.test(props[propName])) {
+      return new Error(
+        'Invalid prop `' + propName + '` supplied to' +
+        ' `' + componentName + '`. Validation failed.'
+      );
+    }
+  }
+}
+
+------------------------------------------------------------------------
+Một số trình xác thực (validators) được cung cập trong lib 'prop-type'
+
+                                  // Type của prop là ...
+
+- optionalArray: PropTypes.array,   // mảng 
+- optionalBool: PropTypes.bool,     // true false
+- optionalFunc: PropTypes.func,     // function
+- optionalNumber: PropTypes.number, // số 
+- optionalObject: PropTypes.object, // object
+- optionalString: PropTypes.string, // chuỗi 
+- optionalSymbol: PropTypes.symbol, // kí tự 
+- optionalNode: PropTypes.node,     // số, chuỗi, element hoặc mảng
+- optionalElement: PropTypes.element, // element
+- optionalElementType: PropTypes.elementType, // một kiểu element
+- optionalMessage: PropTypes.instanceOf(Message), // là một hiện thân của 1 class
+- optionalEnum: PropTypes.oneOf(['News', 'Photos']), // định nghĩa như một giá trị nào đó  
+
+- optionalUnion: PropTypes.oneOfType([ // một trong những kiểu khác
+    PropTypes.string,
+    PropTypes.number,
+    PropTypes.instanceOf(Message)
+ ]),
+
+- optionalArrayOf: PropTypes.arrayOf(PropTypes.number), // một mảng của 1 kiểu nào đó
+- optionalObjectOf: PropTypes.objectOf(PropTypes.number), // một object có giá trị là 1 kiểu nào đó 
+- optionalObjectWithShape: PropTypes.shape({ // là 1 shape nào đó 
+    color: PropTypes.string,
+    fontSize: PropTypes.number
+  }),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

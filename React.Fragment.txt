@@ -1,0 +1,99 @@
+				   Fragment
+
+----------------------------------------------------------------------------
+//Chức năng : Cho phép return nhiều element từ một component mà không làm 
+sinh ra những DOM element không cần thiết 
+
+----------------------------------------------------------------------------
+- Bình thường chúng ta thường dùng thẻ <div></div> để bọc bên ngoài các 
+component con , tuy nhiên trong 1 số những trường hợp thì việc bọc thẻ 
+<div></div> sẽ dẫn đến lỗi hoặc đơn giản chỉ là thừa thãi 
+
+Ví dụ : 
+
+Dưới đây là một common pattern của một React component trả về 
+một list các children:
+
+class Table extends React.Component {
+  render() {
+    return (
+      <table>
+        <tr>
+          <Columns />
+        </tr>
+      </table>
+    );
+  }
+}
+
+<Columns /> component sẽ phải trả về nhiều phần tử <td> để đầu ra 
+HTML hiển thị hợp lệ. Nếu một div cha được sử dụng bên trong render() 
+của <Columns /> component, thì sẽ cho ra kết quả HTML không hợp lệ.
+
+Cách giải quyết : bọc các children bằng <React.Fragment>
+
+class Columns extends React.Component {
+  render() {
+    return (
+      <React.Fragment>
+        <td>Hello</td>
+        <td>World</td>
+      </React.Fragment>
+    );
+  }
+}
+
+Sẽ cho ra kết quả là một <Table /> component chính xác.
+
+<table>
+  <tr>
+    <td>Hello</td>
+    <td>World</td>
+  </tr>
+</table>
+
+----------------------------------------------------------------------------
+//Short Syntax : thay thế <React.Fragment> </React.Fragment> = <> </>
+Tuy nhiên cách này không hộ trợ key và attributes nên vẫn nên dùng 
+<React.Fragment>
+
+----------------------------------------------------------------------------
+//Keyed Fragments : để các fragment được định nghĩa rõ ràng hơn 
+-> Khai báo : <React.fragment key={...}> </React.Fragment>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
