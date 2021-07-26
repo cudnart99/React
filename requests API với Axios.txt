@@ -1,0 +1,90 @@
+// install Axios
+
+- dùng cú pháp npm install axios
+
+---------------------------------------------------------------------
+// Get 
+- dùng cú pháp axios.get()
+
+Ví dụ :
+axios.get('https://api.github.com/users/mapbox');
+
+---------------------------------------------------------------------
+// POST
+- dùng cú pháp axios.post()
+- Thực hiện post request trong axios cần 2 tham số : URL của điểm cuối 
+dịch vụ và đối tượng có chứa các thuộc tính muốn gửi đến máy chủ
+
+Ví dụ :
+
+axios({
+  method: 'post',
+  url: '/login',
+  data: {
+    firstName: 'Finn',
+    lastName: 'Williams'
+  }
+});
+
+- Nếu bỏ trống method thì axios sẽ hiểu là method 'get'
+
+- Cách viết tắt : axios.post(url[, data[, config]])
+
+Ví dụ :
+ 
+axios.post('/login', {
+  firstName: 'Finn',
+  lastName: 'Williams'
+});
+
+---------------------------------------------------------------------
+// axios.post trả về một promise chứa các thành phần sau : 
+
+{
+  // dữ liệu được trả về từ server 
+  data: {},
+ 
+  // HTTP status code từ server trả về 
+  status: 200,
+ 
+  // HTTP status message từ server trả về
+  statusText: 'OK',
+ 
+  // Các headers mà server phản hồi  
+  // Tất cả tên headers đều được viết thường 
+  headers: {},
+ 
+  // Cấu hình được cung cấp cho axios để request
+  config: {},
+ 
+  // Là request được tạo ra từ phản hồi này 
+  request: {}
+}
+
+---------------------------------------------------------------------
+// axios.all()
+- Dùng để gửi nhiều request 1 lúc 
+- Kết hợp với axios.spread() để gán các thuộc tính của mảng phản hổi
+cho các biến riêng biệt 
+
+Ví dụ : 
+
+axios.all([
+  axios.get('https://api.github.com/users/mapbox'),
+  axios.get('https://api.github.com/users/phantomjs')
+])
+.then(axios.spread((user1, user2) => {
+  console.log('Date created: ', user1.data.created_at);
+  console.log('Date created: ', user2.data.created_at);
+}));
+
+// logs:
+// => Date created:  2011-02-04T19:02:13Z
+// => Date created:  2017-04-03T17:25:46Z
+
+---------------------------------------------------------------------
+// JSON post trong axios
+
+- Các js objects tự động được chuyển thành json khi thông quá hàm 
+axios.post
+

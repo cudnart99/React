@@ -1,0 +1,108 @@
+// code splitting : tách code
+
+- Khi code quá nhiều , cần phải thực hiện chia code ra thành các thành
+phần nhỏ hơn để app hoạt động nhanh hơn 
+- Đây là 1 tính năng được cung cấp sẵn
+
+-Hàm React.lazy cho phép hiển thị một quá trình nhập động như một 
+thành phần thông thường.
+
+------------------------------------------------------------------
+//React Loadable
+
+cách install : yarn add react-loadable
+
+ví dụ : 
+
+import Loadable from 'react-loadable';
+
+const LoadableBar = Loadable({
+  loader: () => import('./components/Bar'), // load cái này  
+  loading() {
+    return <div>Loading...</div>    // khi load thì sẽ hiện   
+  }
+});
+
+class MyComponent extends React.Component {
+  render() {
+    return <LoadableBar/>;
+  }
+}
+
+- Tư động code-split khi sử dụng import()
+
+------------------------------------------------------------------
+- Hàm loading : 
+
+function Loading(props) {
+  if (props.error) {
+    return <div>Error! <button onClick={ props.retry }>Retry</button></div>;
+  } else {
+    return <div>Loading...</div>;
+  }
+}
+
+-> hàm loading cần nhận props để xử lí tình huống việc loading có thể 
+fail, hoặc set timeout để tăng trải nghiệm người dùng 
+
+------------------------------------------------------------------
+- Hàm delay : làm delay việc loading , tránh việc màn hình loading 
+hiện ra và biến mất quá nhanh  
+
+function Loading(props) {
+  if (props.error) {
+    return <div>Error! <button onClick={ props.retry }>Retry</button></div>;
+  } else if (props.pastDelay) {
+    return <div>Loading...</div>;
+  } else {
+    return null;
+  }
+}
+- pastDelay đúng khi component dùng lâu hơn thời gian đã đặt để load 
+
+Loadable({
+  loader: () => import('./components/Bar'),
+  loading: Loading,
+  delay: 300, // 0.3 seconds
+});
+
+------------------------------------------------------------------
+- Đặt timeout : đặt thời gian tối đa để load 1 trang 
+- Quá thời gian load sẽ hiện ra thông báo hoặc gợi ý người dùng F5
+
+function Loading(props) {
+  if (props.error) {
+    return <div>Error! <button onClick={ props.retry }>Retry</button></div>;
+  } else if (props.timedOut) {
+    return <div>Taking a long time... <button onClick={ props.retry }>Retry</button></div>;
+  } else if (props.pastDelay) {
+    return <div>Loading...</div>;
+  } else {
+    return null;
+  }
+}
+
+Loadable({
+  loader: () => import('./components/Bar'),
+  loading: Loading,
+  timeout: 10000, // 10 seconds
+});
+
+------------------------------------------------------------------
+- Tự tạo màn hình loading :
+
+Loadable({
+  loader: () => import('./my-component'),
+  render(loaded, props) {
+    let Component = loaded.namedExport;
+    return <Component {...props}/>;
+  }
+});
+
+------------------------------------------------------------------
+
+
+
+
+
+

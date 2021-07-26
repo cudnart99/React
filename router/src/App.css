@@ -11,10 +11,10 @@ nav{
   color: white;
 }
 
-nav-links{
-  width: 50%;
+.nav-links{
+  width: 40%;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  list-style:none;
+  list-style: none;
 }

@@ -60,10 +60,13 @@ và chúng ta có thể style cho nó
 - Dùng để chuyển trang 
 - Có thể truy xuất thông tin trang trước đó thông qua đối tượng location
 -----------------------------------------------------------------------------
+// Switch 
+<Switch> sẽ lặp qua các phần tử con của nó (routes) và chỉ render đầu tiên phù 
+hợp với tên đường dẫn hiện tại.
 
-
-
-
+-----------------------------------------------------------------------------
+//exact 
+- thêm vào Route để đi đến chính xác đường dẫn 
 
 
 
