@@ -1,0 +1,13 @@
+Một số API
+
+- tự viết 
+- cung cấp sẵn : RedditAPI ,pokemonAPI, ...
+- API giả lập : Mock API, Json Server
+
+// một số method 
+
+- get : lấy dữ liệu 
+- get-id : lấy dữ liệu theo id 
+- post : tạo mới 1 dữ liệu 
+- put-id : cập nhật dữ liệu theo id
+- delete-id : xóa dữ liệu theo id  
