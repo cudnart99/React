@@ -1,0 +1,23 @@
+.mt-50 {
+  margin-top: 50px;
+}
+
+.m-10 {
+  margin: 10px;
+}
+
+#content {
+  padding: 10px;
+  border: 1px solid red;
+}
+
+.boxColor {
+  display: inline-block;
+  margin: 20px;
+  height: 50px;
+  width: 50px;
+}
+
+.active {
+    border : 4px solid black;
+}

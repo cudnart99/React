@@ -83,7 +83,7 @@ axios.all([
 // => Date created:  2017-04-03T17:25:46Z
 
 ---------------------------------------------------------------------
-// JSON post trong axios
+// JSON post trong axios 
 
 - Các js objects tự động được chuyển thành json khi thông quá hàm 
 axios.post

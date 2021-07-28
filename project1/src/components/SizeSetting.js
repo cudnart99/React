@@ -1,5 +1,16 @@
-function SizeSetting() {
-    return <></>;
+import React from "react";
+
+export default function SizeSetting(props) {
+  function changeSize(value) {
+    props.onReceiveFontSize(value);
   }
-  
-  export default SizeSetting;
+  return (
+    <>
+      <div>Size : {props.fontSize}</div>
+      <div>
+        <button onClick={() => changeSize(2)}>Tăng</button>
+        <button onClick={() => changeSize(-2)}>Giảm</button>
+      </div>
+    </>
+  );
+}

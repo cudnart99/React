@@ -1,0 +1,15 @@
+// Redux
+
+- Redux là một predictable state management tool cho các ứng dung
+javascript. Nó giúp viết các ứng dụng hoạt động 1 cách nhất quán, chạy
+trong các môi trường khác nhau và dễ dàng để text
+
+- Với Redux, state của ứng dụng được giữ  trong một nơi là store và 
+mỗi component đều có thể access bất kỳ state nào chúng muốn từ store 
+này 
+
+- Redux gồm 3 thành phần : Actions, Store, Reducers
+
+---------------------------------------------------------------------
+//Actions
+
