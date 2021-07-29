@@ -1,10 +1,11 @@
 import React from "react";
 // import Greeting from "./components/checkProp";
-import Nav from "./Nav";
-import About from "./About";
-import Shop from "./Shop";
-import "./App.css";
-import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+// import Nav from "./Nav";
+// import About from "./About";
+// import Shop from "./Shop";
+// import "./App.css";
+// import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import demo from './trainning/demo';
 
 // const routes = [
 //   {
@@ -24,6 +25,14 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 //     main: () => <h2>Shoelaces</h2>
 //   }
 // ];
+
+// const Home = () => {
+//   return (
+//     <div>
+//       <h1>Home page</h1>
+//     </div>
+//   );
+// };
 
 export default function Apps() {
   // return (
@@ -86,29 +95,21 @@ export default function Apps() {
   // );
 
   // return (
-  //   <div className="App">
-  //     <Greeting name="Duc" />
-  //   </div>
+  //   <Router>
+  //     <div className="App">
+  //       <Nav />
+  //       <Switch>
+  //         <Route path="/"exact component={Home} />
+  //         <Route path="/about" component={About} />
+  //         <Route path="/shop" component={Shop} />
+  //       </Switch>
+  //     </div>
+  //   </Router>
   // );
 
   return (
-    <Router>
-      <div className="App">
-        <Nav />
-        <Switch>
-          <Route path="/"exact component={Home} />
-          <Route path="/about" component={About} />
-          <Route path="/shop" component={Shop} />
-        </Switch>
-      </div>
-    </Router>
-  );
-}
-
-const Home = () => {
-  return (
-    <div>
-      <h1>Home page</h1>
+    <div className="App">
+      
     </div>
   );
-};
+}

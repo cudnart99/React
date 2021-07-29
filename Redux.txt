@@ -10,6 +10,65 @@ này
 
 - Redux gồm 3 thành phần : Actions, Store, Reducers
 
----------------------------------------------------------------------
-//Actions
++ Actions : : đây là những đối tượng phải có hai thuộc tính, một mô
+ tả loại hành động và một mô tả những gì sẽ được thay đổi trong
+state.
++ Reduces : đây là những function thực hiện hành vi của các action.
+Nó thay đổi state của app, dựa trên mô tả của action và mô tả 
+thay đổi state.
++ Store : kết hợp actions và reduces với nhau, giữ và thay đổi trạng 
+thái của state cho toàn bộ app
+
+----------------------------------------------------------------------
+// Cách redux hoạt động : nó có 1 store lưu trữ toàn bộ state của app. 
+Mỗi component có thể access trực tiếp đến state được lưu trữ thay 
+vì phải send drop down props từ component này đến component khác.
+
+// Workflow : 
+- Khi một State thay đổi hay render của view thay đổi thì một action
+sẽ được tạo ra 
+- Action được được đến store để lưu trữ và vào trong reducer để tiến 
+hành thay đổi , update
+- Sau khi state được update thì sẽ được gọi ra các component ở bên 
+ngoài để làm thay đổi view
+-------------------------------------------------------------------
+// Cách dispatch một action đến redux
+
+- Actions được gửi bằng cách sử dụng store.dispatch() method, chúng phải 
+có một type property để biểu lộ loại action để thực hiện. Chúng cũng
+phải có một payload chứa thông tin. Actions được tạo thông qua một 
+action creator
+
+const setLoginStatus = (name, password) => {    // khởi tạo một action
+       return {					
+         type: "LOGIN",				// type property
+         payload: {				// payload property
+             username: "foo",
+             password: "bar"
+         }
+       }
+    }
+
+-------------------------------------------------------------------
+// Cách connect lấy dữ liệu từ redux
+- Do các actions thực hiện trên một state luôn trả về một giá trị
+state mới nên state này là đơn giản và đoán được 
+- Để truy cập vào state trong store ta sử dụng cú pháp store.getState()
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 

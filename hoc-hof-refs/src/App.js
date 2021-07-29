@@ -5,6 +5,7 @@ import './App.css';
 // import LogButtonClicks from './components/useRef'
 // import Stopwatch from './components/stopwatch';
 import Hof from './components/hof';
+import demo from './trainning/demo';
 
 function App() {
   return (
@@ -13,7 +14,7 @@ function App() {
       {/* <React_refs /> */}
       {/* <LogButtonClicks /> */}
       {/* <Stopwatch /> */}
-      <Hof />
+      {/* <Hof /> */}
     </div>
   );
 }

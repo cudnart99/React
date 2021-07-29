@@ -1,0 +1,31 @@
+                             useContext 
+
+// Context : 
+
+Context cung cấp phương pháp truyền data xuyên suốt component tree mà 
+không cần phải truyền props một cách thủ công qua từng level
+
+// useContext là một hooks trong React Hooks cho phép chúng ta có thể 
+làm việc với React Context trong một functional component
+
+- Để sử dụng useContext , ta sẽ truyền vào hooks này mộ tham số duy
+nhất đó là Context object( được tạo bởi React.createContext ) 
+
+ví dụ : const AppContext = React.createContext({foo:'bar'});
+
+- Khi cần lấy giá trị của context trong functional component chúng ta 
+sẽ sử dụng : 
+const context = useContext(AppContext);
+
+// state management với context 
+- Cái này gần giống với việc truyền state thông qua props để có thể 
+điều khiển các components , chỉ khác là context có thể truyền data
+xuyên suốt các component còn props thì phải truyền thủ công 
+
+- Các bước : 
++ Tạo một context để truyền state ở component cha bằng 
+React.creactContext()
++ Bọc các component con cần truyền state bằng Provider , truyền state
+vào value của context
++ Sử dụng useContext để lấy value của context và sử dụng cho component 
+con

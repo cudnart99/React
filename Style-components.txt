@@ -1,0 +1,96 @@
+                           Style components
+
+// Style components là các để sử dụng các thuộc tính css cho 
+components  
+
+----------------------------------------------------------------------
+// installation 
+
+- sử dụng cú pháp : npm install --save styled-components
+
+----------------------------------------------------------------------
+////  Cú pháp 
+----------------------------------------------------------------------
+// Cơ bản : 
+
+- Ví dụ : 
+
+// Tạo Title component là 1 thẻ <h1> với một vài styles
+const Title = styled.h1`
+  font-size: 1.5em;
+  text-align: center;
+  color: palevioletred;
+`;
+
+// Tạo một Wrapper component là 1 thẻ <section> với 1 vài styles
+const Wrapper = styled.section`
+  padding: 4em;
+  background: papayawhip;
+`;
+
+// Sử dung Title và Wrapper như những component khác trong React
+render(
+  <Wrapper>
+    <Title>
+      Hello World!
+    </Title>
+  </Wrapper>
+);
+
+----------------------------------------------------------------------
+- Có thể thực hiện truyền props để làm thay đổi các style được sử dụng
+
+const Button = styled.button`
+  // Background phụ thuộc vào props primary 
+  background: ${props => props.primary ? "palevioletred" : "white"};
+
+render(
+  <div>
+    <Button primary>Primary</Button>
+  </div>
+);
+
+----------------------------------------------------------------------
+- Có thể coi các style như là props để truyền cho các components
+bắng cú pháp truyền props 
+
+function Backdrop({ opacity, color, children }) {
+  return (
+    <Wrapper opacity={opacity} color={color}> // truyền props là các
+      {children}                              // css style 
+    </Wrapper>
+  )
+}
+const Wrapper = styled.div`
+  opacity: ${p => p.opacity};                 // nhận props là các 
+  background-color: ${p => p.color};          // css style 
+`;
+
+----------------------------------------------------------------------
+- Sử dụng CSS variables : 
+
+
+function Backdrop({ opacity, color, children }) {
+  return (
+    <Wrapper
+      style={{
+        '--color': color,         // khai bảo css variables cho Wrapper
+        '--opacity': opacity,     // khai bảo css variables cho Wrapper
+      }}
+    >
+      {children}
+    </Wrapper>
+  )
+}
+const Wrapper = styled.div`
+  opacity: var(--opacity);        // Sử dụng
+  background-color: var(--color); // Sử dụng 
+`;
+
+
+
+
+
+
+
+
